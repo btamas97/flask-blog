@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="formwrapper">
+    <form method="POST" action="{{ url_for('auth.login') }}">
+        {{ form.csrf_token }}
+        <div class="username">
+            {{ form.username }} {{ form.username.label }}
+        </div>
+        <div class="password">
+            {{ form.password }} {{ form.password.label }}
+        </div>
+        <input type="submit" value="Log in">
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
+        {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}

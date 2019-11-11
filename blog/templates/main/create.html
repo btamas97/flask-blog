@@ -1,0 +1,20 @@
+{% extends 'base.html %}
+
+{% block header %}
+    <h1>{% block title %}New Post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="formwrapper">
+        <form method="POST" action="{{ url_for('main.create'}}">
+            {{ form.csrf_token }}
+            <div class="title">
+                {{ article_form.title }} {{ article_form.title.label }}
+            </div>
+            <div class="body">
+                {{ article_form.password }} {{ article_form.body.label }}
+            </div>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}

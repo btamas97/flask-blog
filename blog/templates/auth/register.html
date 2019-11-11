@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="formwrapper">
+    <form action="{{ url_for('auth.register') }}" method="POST">
+        {{ form.csrf_token }}
+        <div class="username">
+            {{ form.username }} {{ form.username.label }}
+            {% if form.username.errors %}
+                <ul class="errors">{% for error in form.username.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+        <div class="password">
+            {{ form.password }} {{ form.password.label }}
+            {% if form.password.errors %}
+                <ul class="errors">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+        <div class="confirm">
+            {{ form.confirm_password }} {{ form.confirm_password.label }}
+            {% if form.confirm_password.errors %}
+                <ul class="errors">{% for error in form.confirm_password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+        <input type="submit" value="Register">
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

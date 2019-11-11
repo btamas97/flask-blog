@@ -1,0 +1,16 @@
+{% extends 'post.html %}
+
+{% block comment %}
+    <div class="formwrapper">
+        <form method="POST" action="{{ url_for('article.comment'}}">
+            {{ form.csrf_token }}
+            <div class="title">
+                {{ article_form.title }} {{ article_form.title.label }}
+            </div>
+            <div class="body">
+                {{ article_form.password }} {{ article_form.body.label }}
+            </div>
+            <input type="submit" value="Leave a comment">
+        </form>
+    </div>
+{% endblock %}

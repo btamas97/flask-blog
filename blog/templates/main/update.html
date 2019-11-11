@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h1>{% block title %}Edit{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="formwrapper">
+        <form method="post" action="/update">
+            <div class="title">
+                {{ post_form.title }} {{ post_form.title.label }}
+            </div>
+            <div class="body">
+                {{ post_form.password }} {{ post_form.body.label }}
+            </div>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}
